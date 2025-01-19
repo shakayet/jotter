@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import axios from "axios";
@@ -10,14 +10,29 @@ const CalendarComponent = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [uploadedDates, setUploadedDates] = useState(new Set());
 
-  const API_URL = "https://jotter-backend.onrender.com/backend";
+  const API_URL = "https://jotter-backend.onrender.com";
+
+  // Fetch all available dates with uploaded content
+  useEffect(() => {
+    const fetchUploadedDates = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/uploaded-dates`); // Endpoint to fetch all uploaded dates
+        const availableDates = new Set(response.data.map(date => moment(date).format("YYYY-MM-DD")));
+        setUploadedDates(availableDates);
+      } catch (error) {
+        console.error("Error fetching uploaded dates:", error);
+      }
+    };
+    fetchUploadedDates();
+  }, []);
 
   // Fetch items for the selected date
   const fetchItemsForDate = async (date) => {
     setLoading(true);
     setMessage("");
-    const formattedDate = moment(date).tz("Asia/Dhaka").format("YYYY-MM-DD"); // Format date in local timezone
+    const formattedDate = moment(date).format("YYYY-MM-DD");
 
     try {
       const [pdfsResponse, imagesResponse, notesResponse] = await Promise.all([
@@ -77,6 +92,12 @@ const CalendarComponent = () => {
             onChange={handleDateChange}
             value={selectedDate}
             className="mb-6 border rounded shadow-md"
+            tileContent={({ date }) => {
+              const formattedDate = moment(date).format("YYYY-MM-DD");
+              return uploadedDates.has(formattedDate) ? (
+                <div className="bg-green-500 text-white rounded-full w-6 h-6 text-center text-xs">✔</div>
+              ) : null;
+            }}
           />
           <h2 className="text-lg font-semibold mb-4">
             Selected Date: {selectedDate.toDateString()}

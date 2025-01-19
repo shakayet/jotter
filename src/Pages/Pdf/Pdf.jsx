@@ -7,7 +7,7 @@ const Pdf = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedPdfs, setUploadedPdfs] = useState([]);
 
-  const API_URL = "https://jotter-backend.onrender.com/backend";
+  const API_URL = "https://jotter-backend.onrender.com";
 
   // Fetch uploaded PDFs
   const fetchPdfs = async () => {

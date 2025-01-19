@@ -64,7 +64,7 @@ const ImportData = () => {
                   Total Database Size
                 </h3>
               </div>
-              <p>Storage usages: {databaseInfo.totalSize} MB</p>
+              <p>Storage usages: {databaseInfo.totalSize} </p>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ const ImportData = () => {
                   <h3 className="font-bold">Notes</h3>
                 </div>
                 <p>Items: {notesStats.count}</p>
-                <p>Storage: {notesStats.size} MB</p>
+                <p>Storage: {notesStats.totalSize} </p>
               </a>
             </div>
 
@@ -93,7 +93,7 @@ const ImportData = () => {
                   <h3 className="font-bold">Images</h3>
                 </div>
                 <p>Items: {imagesStats.count}</p>
-                <p>Storage: {imagesStats.size} MB</p>
+                <p>Storage: {imagesStats.totalSize} </p>
               </a>
             </div>
 
@@ -107,7 +107,7 @@ const ImportData = () => {
                   <h3 className="font-bold">PDF</h3>
                 </div>
                 <p>Items: {pdfsStats.count}</p>
-                <p>Storage: {pdfsStats.size} MB</p>
+                <p>Storage: {pdfsStats.totalSize} </p>
               </a>
             </div>
           </div>
