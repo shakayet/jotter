@@ -51,10 +51,10 @@ function Footer() {
       {/* Bookmark Button */}
       <button
         className="flex flex-col items-center text-gray-600 hover:text-black mb-2"
-        onClick={() => navigate("/favourites")}
+        onClick={() => navigate("/favourite")}
       >
         <FaBookmark className="text-xl" />
-        <span className="text-xs">Bookmarks</span>
+        <span className="text-xs">Favourites</span>
       </button>
 
       {/* Add Button with Dropdown */}
@@ -83,7 +83,7 @@ function Footer() {
       </li>
       <li
         className="flex items-center gap-2 py-3 px-4 hover:bg-green-100 cursor-pointer text-gray-700 transition duration-300"
-        onClick={() => navigate("/pdf")}
+        onClick={() => navigate("/pdfs")}
       >
         📄 Import PDF
       </li>
@@ -101,7 +101,7 @@ function Footer() {
       {/* Calendar Button */}
       <button
         className="flex flex-col items-center text-gray-600 hover:text-black mb-2"
-        onClick={() => console.log("Calendar clicked")}
+        onClick={() => navigate("/calendar")}
       >
         <FaCalendarAlt className="text-xl" />
         <span className="text-xs">Calendar</span>
@@ -110,7 +110,7 @@ function Footer() {
       {/* Profile Button */}
       <button
         className="flex flex-col items-center text-gray-600 hover:text-black mb-2"
-        onClick={() => console.log("Profile clicked")}
+        onClick={() =>  navigate("/profile")}
       >
         <FaUser className="text-xl" />
         <span className="text-xs">Profile</span>

@@ -8,6 +8,10 @@ import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import Notes from "../Pages/Notes/Notes";
 import Images from "../Pages/Images/Images";
 import Pdf from "../Pages/Pdf/Pdf";
+import Favourites from "../Pages/Favourites/Favourites";
+import Calendar from "../Pages/Calender/CalenderComponent";
+import CalendarComponent from "../Pages/Calender/CalenderComponent";
+import Profile from "../Pages/Profile/Profile";
 
 const Router = createBrowserRouter([
     {
@@ -39,8 +43,20 @@ const Router = createBrowserRouter([
         element: <Images />
     },
     {
-        path: "/pdf",
+        path: "/pdfs",
         element: <Pdf />
+    },
+    {
+        path: "/favourite",
+        element: <Favourites /> 
+    },
+    {
+        path: "/calendar",
+        element: <CalendarComponent />
+    },
+    {
+        path: "/profile",
+        element: <Profile />
     }
 ]);
 
